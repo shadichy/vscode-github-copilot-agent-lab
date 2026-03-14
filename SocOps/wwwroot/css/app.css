@@ -76,7 +76,7 @@ body {
 .bg-amber-100 { background-color: #ffd200; }
 .bg-amber-200 { background-color: #ffed4e; }
 .bg-accent { background-color: #dc0000; }
-.bg-marked { background-color: #00ff41; }
+.bg-marked { background-color: #2a0a0a; }
 .bg-black\/50 { background-color: rgba(0, 0, 0, 0.8); }
 
 /* Header and Container Styling */
@@ -118,9 +118,9 @@ article {
 .text-gray-800 { color: #d0d0d0; }
 .text-gray-900 { color: #e8e8e8; }
 .text-green-600 { color: #00ff41; }
-.text-green-800 { color: #00cc33; }
+.text-green-800 { color: #e8e8e8; }
 .text-amber-500 { color: #ffd200; }
-.text-amber-800 { color: #ff9900; }
+.text-amber-800 { color: #ffffff; }
 .text-amber-900 { color: #ff6600; }
 
 .text-xs { font-size: 0.75rem; line-height: 1rem; }
@@ -141,7 +141,7 @@ article {
 .border-gray-200 { border-color: #333333; }
 .border-gray-300 { border-color: #444444; }
 .border-amber-400 { border-color: #ffd200; }
-.border-marked-border { border-color: #00ff41; }
+.border-marked-border { border-color: #ff0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.8), inset 0 0 10px rgba(255, 0, 0, 0.4); }
 
 .rounded { border-radius: 0.25rem; }
 .rounded-lg { border-radius: 0.5rem; }
@@ -235,6 +235,24 @@ button:disabled {
     }
 }
 
+@keyframes checkered-pattern {
+    0%, 100% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 20px 20px;
+    }
+}
+
+@keyframes finish-flag-pulse {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(255, 210, 0, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 210, 0, 0.8);
+    }
+}
+
 .animate-\[bounce_0\.5s_ease-out\] {
     animation: bounce 0.5s ease-out;
 }
@@ -245,6 +263,28 @@ button:disabled {
 
 .animate-checkered-flag {
     animation: checkered-flag 0.6s ease-out;
+}
+
+/* Winning squares - Checkered flag effect */
+.bg-amber-200 {
+    background: repeating-linear-gradient(
+        45deg,
+        #2a0a0a,
+        #2a0a0a 10px,
+        #1a0505 10px,
+        #1a0505 20px
+    );
+    position: relative;
+}
+
+.bg-amber-200::after {
+    content: '🏁';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    animation: finish-flag-pulse 1s ease-in-out infinite;
 }
 
 #blazor-error-ui {
